@@ -1,14 +1,15 @@
 package POJO;
 
-public class Perro extends Animal {
+import java.io.Serializable;
+
+public class Perro extends Animal implements Serializable {
 
     private String lenguaje = "GUAU";
     private boolean raboLargo;
 
     public Perro(String nombre,int edad,boolean raboLargo){
         super(nombre,edad);
-        this.raboLargo=raboLargo;
-        
+        this.raboLargo=raboLargo;       
     }
 
     public String getLenguaje() {

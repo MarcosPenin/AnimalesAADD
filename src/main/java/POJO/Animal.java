@@ -1,6 +1,8 @@
 package POJO;
 
-public abstract class Animal {
+import java.io.Serializable;
+
+public abstract class Animal implements Serializable{
 
     public Animal(String nombre, int edad) {
         this.nombre = nombre;
