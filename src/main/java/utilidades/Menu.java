@@ -42,8 +42,8 @@ public class Menu {
         }
         return enrango;
     }
-    
-        public boolean rangoInt(int op) {
+
+    public boolean rangoInt(int op) {
         boolean enrango = true;
         if (op < 1 || op > numOpciones) {
             enrango = false;

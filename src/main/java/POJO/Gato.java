@@ -1,16 +1,18 @@
-
 package POJO;
 
 import java.io.Serializable;
 
-public class Gato extends Animal implements Serializable  {
-    
-    private String lenguaje="MIAU";
+public class Gato extends Animal implements Serializable {
+
+    private String lenguaje = "MIAU";
     private boolean bigotesLargos;
-    
-    public Gato(String nombre,int edad,boolean bigotesLargos){
-        super(nombre,edad);
-        this.bigotesLargos=bigotesLargos;    
+
+    public Gato() {
+    }
+
+    public Gato(String nombre, int edad, boolean bigotesLargos) {
+        super(nombre, edad);
+        this.bigotesLargos = bigotesLargos;
     }
 
     public String getLenguaje() {
@@ -29,6 +31,4 @@ public class Gato extends Animal implements Serializable  {
         this.bigotesLargos = bigotesLargos;
     }
 
-    
-    
 }

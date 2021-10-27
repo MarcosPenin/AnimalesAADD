@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public abstract class Animal implements Serializable{
 
+    public Animal(){}
     public Animal(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;

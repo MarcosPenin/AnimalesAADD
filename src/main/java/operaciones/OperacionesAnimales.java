@@ -24,28 +24,27 @@ public class OperacionesAnimales {
 
     public static Perro[] perros = new Perro[5];
     public static Gato[] gatos = new Gato[5];
+    final static String ruta = "Archivo.txt";
 
-    public static void addPerro(Perro perro) {
-        boolean flag = true;
+    public static boolean addPerro(Perro perro) {
+        boolean flag = false;
         for (int x = 0; x < perros.length; x++) {
             if (perros[x] == null) {
                 perros[x] = perro;
+                flag = true;
                 break;
-            } else {
-                flag = false;
             }
         }
-
+        return flag;
     }
 
     public static boolean addGato(Gato gato) {
-        boolean flag = true;
+        boolean flag = false;
         for (int x = 0; x < gatos.length; x++) {
             if (gatos[x] == null) {
                 gatos[x] = gato;
+                flag = true;
                 break;
-            } else {
-                flag = false;
             }
         }
         return flag;
@@ -58,58 +57,61 @@ public class OperacionesAnimales {
      * fichero, antes de los objetos, el número de objetos total que vamos a
      * escribir.*
      */
-    public static void guardarDatos(String ruta) throws IOException {
+    public static void guardarDatos() throws IOException {
 
         File archivo = new File(ruta);
         for (Animal x : perros) {
 
             if (!archivo.exists()) {
                 archivo.createNewFile();
-                ObjectOutputStream mos = new ObjectOutputStream(new FileOutputStream("Animales.txt", true));
+                ObjectOutputStream mos = new ObjectOutputStream(new FileOutputStream(ruta, true));
                 mos.writeObject(x);
             } else {
-                MiObjectOutputStream mios = new MiObjectOutputStream(new FileOutputStream("Animales.txt", true));
+                MiObjectOutputStream mios = new MiObjectOutputStream(new FileOutputStream(ruta, true));
                 mios.writeObject(x);
             }
         }
         for (Animal x : gatos) {
             if (!archivo.exists()) {
                 archivo.createNewFile();
-                ObjectOutputStream mos = new ObjectOutputStream(new FileOutputStream("Animales.txt", true));
+                ObjectOutputStream mos = new ObjectOutputStream(new FileOutputStream(ruta, true));
                 mos.writeObject(x);
             } else {
-                MiObjectOutputStream mios = new MiObjectOutputStream(new FileOutputStream("Animales.txt", true));
+                MiObjectOutputStream mios = new MiObjectOutputStream(new FileOutputStream(ruta, true));
                 mios.writeObject(x);
             }
 
         }
     }
 
-    public static void leerDatos(String ruta) throws IOException, ClassNotFoundException {
+    public static void leerDatos() throws IOException, ClassNotFoundException {
 
         FileInputStream fis = new FileInputStream(ruta);
         ObjectInputStream ois = new ObjectInputStream(fis);
-
+        int contador = 1;
         while (fis.available() > 0) {
             Animal animalLeido = (Animal) ois.readObject();
-
+            
             if (animalLeido instanceof Perro) {
                 if (((Perro) animalLeido).isRaboLargo()) {
-                    JOptionPane.showMessageDialog(null, "El nombre del animal es " + animalLeido.getNombre() + ", tiene "
+                    System.out.println("El animal número " + contador + " es un perro, se llama " + animalLeido.getNombre() + ", tiene "
                             + animalLeido.getEdad() + " años y el rabo largo. Hace " + ((Perro) animalLeido).getLenguaje());
                 } else {
-                    JOptionPane.showMessageDialog(null, "El nombre del animal es " + animalLeido.getNombre() + ", tiene "
+                    System.out.println("El animal número " + contador + " es un perro, se llama " + animalLeido.getNombre() + ", tiene "
                             + animalLeido.getEdad() + " años y el rabo corto. Hace " + ((Perro) animalLeido).getLenguaje());
                 }
+                contador++;
             } else if (animalLeido instanceof Gato) {
                 if (((Gato) animalLeido).isBigotesLargos()) {
-                    JOptionPane.showMessageDialog(null, "El nombre del animal es " + animalLeido.getNombre() + ", tiene "
+                    System.out.println("El animal número " + contador + " es un gato, se llama " + animalLeido.getNombre() + ", tiene "
                             + animalLeido.getEdad() + " años y los bigotes largos. Hace " + ((Gato) animalLeido).getLenguaje());
                 } else {
-                    JOptionPane.showMessageDialog(null, "El nombre del animal es " + animalLeido.getNombre() + ", tiene "
-                            + animalLeido.getEdad() + " años y los bigotes largos. Hace " + ((Gato) animalLeido).getLenguaje());
+                    System.out.println("El animal número " + contador + " es un gato, se llama " + animalLeido.getNombre() + ", tiene "
+                            + animalLeido.getEdad() + " años y los bigotes cortos. Hace " + ((Gato) animalLeido).getLenguaje());
                 }
+                contador++;
             }
+
         }
 
     }

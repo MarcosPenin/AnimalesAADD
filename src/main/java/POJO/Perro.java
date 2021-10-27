@@ -7,6 +7,8 @@ public class Perro extends Animal implements Serializable {
     private String lenguaje = "GUAU";
     private boolean raboLargo;
 
+    public Perro(){}
+    
     public Perro(String nombre,int edad,boolean raboLargo){
         super(nombre,edad);
         this.raboLargo=raboLargo;       
