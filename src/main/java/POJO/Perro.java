@@ -4,14 +4,21 @@ import java.io.Serializable;
 
 public class Perro extends Animal implements Serializable {
 
+    /**Propiedades específicas. En el caso del lenguaje, decidí inicializarla automáticamente, 
+     * ya que en principio todos los perros van a hacer GUAU.  
+     */
+    
     private String lenguaje = "GUAU";
     private boolean raboLargo;
 
-    public Perro(){}
+    public Perro() {
+    }
+
+   //Constructor con el atributo específico de la clase
     
-    public Perro(String nombre,int edad,boolean raboLargo){
-        super(nombre,edad);
-        this.raboLargo=raboLargo;       
+    public Perro(String nombre, int edad, boolean raboLargo) {
+        super(nombre, edad);
+        this.raboLargo = raboLargo;
     }
 
     public String getLenguaje() {
@@ -29,5 +36,5 @@ public class Perro extends Animal implements Serializable {
     public void setRaboLargo(boolean raboLargo) {
         this.raboLargo = raboLargo;
     }
-    
+
 }
